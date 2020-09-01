@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button class="btn btn-default"><i id="minusButton" class="fas fa-minus"></i></button>
+                           <input id="currentNumber" type="text" class="form-control text-center" value="1">
+                           <button class="btn btn-default"><i id="plusButton" class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$<span id="priceOfOne">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button class="btn btn-default"><i id="caseMinus" class="fas fa-minus"></i></button>
+                           <input id="caseCurrentNumber" type="text" class="form-control text-center" value="1">
+                           <button class="btn btn-default"><i id="casePlus" class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$<span id="casePriceOne">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -64,9 +64,9 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
+                        <h5>$<span id="subTotal">1278</span></h5>
                         <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5>$<span id="total">1278</span></h5>
                      </div>
                   </div>
                </div>
@@ -77,6 +77,114 @@
          </div>
       </div>
    </section>
+
+
+
+   <script>
+      //iphone plus Button Event
+      const plusButton = document.getElementById("plusButton");
+      plusButton.addEventListener("click", function(){
+         const currentNumber = document.getElementById("currentNumber").value;
+         const convertNumber = parseFloat(currentNumber);
+         const increaseNumber = convertNumber + 1;
+         document.getElementById("currentNumber").value = increaseNumber;
+
+         const priceOfOne = document.getElementById("priceOfOne").innerText;
+         const priceOfOneInNumber = parseFloat(priceOfOne);
+         const increasePrice = priceOfOneInNumber + 1219;
+         document.getElementById("priceOfOne").innerText = increasePrice;
+
+         const subTotal = document.getElementById("subTotal").innerText;
+         const convertSubTotal = parseFloat(subTotal);
+         const increaseSubTotal = convertSubTotal + 1219;
+         document.getElementById("subTotal").innerText = increaseSubTotal;
+
+         const total = document.getElementById("total").innerText;
+         const convertTotal = parseFloat(total);
+         const increaseTotal = convertTotal + 1219;
+         document.getElementById("total").innerText = increaseTotal;
+      })
+
+      //iphone Minus Button Event
+      const minusButton = document.getElementById("minusButton");
+      minusButton.addEventListener("click", function(){
+         const currentNumber = document.getElementById("currentNumber").value;
+         const convertNumber = parseFloat(currentNumber);
+         const decreaseNumber = convertNumber - 1;
+         if(decreaseNumber < 0){
+            decreaseNumber = 0
+         };
+         document.getElementById("currentNumber").value = decreaseNumber;
+
+         const priceOfOne = document.getElementById("priceOfOne").innerText;
+         const priceOfOneInNumber = parseFloat(priceOfOne);
+         const decreasePrice = priceOfOneInNumber - 1219;
+         document.getElementById("priceOfOne").innerText = decreasePrice;
+
+         const subTotal = document.getElementById("subTotal").innerText;
+         const convertSubTotal = parseFloat(subTotal);
+         const decreaseSubTotal = convertSubTotal - 1219;
+        
+         document.getElementById("subTotal").innerText = decreaseSubTotal;
+
+         const total = document.getElementById("total").innerText;
+         const convertTotal = parseFloat(total);
+         const decreaseTotal = convertTotal - 1219;
+         document.getElementById("total").innerText = decreaseTotal;
+      })
+
+      //casing plus Button Event
+      const casePlus = document.getElementById("casePlus");
+      casePlus.addEventListener("click", function(){
+         const caseCurrentNumber = document.getElementById("caseCurrentNumber").value;
+         const caseConvertNumber = parseFloat(caseCurrentNumber);
+         const increaseCaseNumber = caseConvertNumber + 1;
+         document.getElementById("caseCurrentNumber").value = increaseCaseNumber;
+
+         const casePriceOne = document.getElementById("casePriceOne").innerText;
+         const casePriceOfOneInNumber = parseFloat(casePriceOne);
+         const increaseCasePrice = casePriceOfOneInNumber + 59;
+         document.getElementById("casePriceOne").innerText = increaseCasePrice;
+
+         const subTotal = document.getElementById("subTotal").innerText;
+         const convertSubTotal = parseFloat(subTotal);
+         const increaseSubTotal = convertSubTotal + 59;
+         document.getElementById("subTotal").innerText = increaseSubTotal;
+
+         const total = document.getElementById("total").innerText;
+         const convertTotal = parseFloat(total);
+         const increaseTotal = convertTotal + 59;
+         document.getElementById("total").innerText = increaseTotal;
+      })
+
+      //casing minus Button Event
+      const caseMinus = document.getElementById("caseMinus");
+      caseMinus.addEventListener("click", function(){
+         const caseCurrentNumber = document.getElementById("caseCurrentNumber").value;
+         const caseConvertNumber = parseFloat(caseCurrentNumber);
+         const decreaseCaseNumber = caseConvertNumber - 1;
+         if(decreaseCaseNumber < 0){
+            decreaseCaseNumber = 0
+         };
+         document.getElementById("caseCurrentNumber").value = decreaseCaseNumber;
+
+         const casePriceOne = document.getElementById("casePriceOne").innerText;
+         const casePriceOfOneInNumber = parseFloat(casePriceOne);
+         const decreaseCasePrice = casePriceOfOneInNumber - 59;
+         document.getElementById("casePriceOne").innerText = decreaseCasePrice;
+
+         const subTotal = document.getElementById("subTotal").innerText;
+         const convertSubTotal = parseFloat(subTotal);
+         const decreaseSubTotal = convertSubTotal - 59;
+         document.getElementById("subTotal").innerText = decreaseSubTotal;
+
+         const total = document.getElementById("total").innerText;
+         const convertTotal = parseFloat(total);
+         const decreaseTotal = convertTotal - 59;
+         document.getElementById("total").innerText = decreaseTotal;
+      })
+
+   </script>
 </body>
 
 </html>
